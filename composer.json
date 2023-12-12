@@ -1,0 +1,24 @@
+{
+    "name": "deeejmc/php-dto",
+    "description": "This simple PHP DTO package makes populating and manipulating data a breeze.",
+    "keywords": ["php", "laravel", "symfony"],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/deeejmc/php-dto/issues",
+        "source": "https://github.com/deeejmc/php-dto"
+    },
+    "authors": [
+        {
+            "name": "Dom McLaughlin",
+            "email": "dom@d3j.digital"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Deeejmc\\PhpDto\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.0"
+    }
+}
