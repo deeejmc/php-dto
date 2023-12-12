@@ -103,7 +103,7 @@ abstract class Dto implements DtoContract
      * 
      * @return void
      */
-    private function _populate(array $attributes)
+    private function _populate(array $attributes): void
     {
         foreach ($attributes as $key => $value) {
 
@@ -140,7 +140,7 @@ abstract class Dto implements DtoContract
      * 
      * @return string
      */
-    private function _snakeToCamel(string $input)
+    private function _snakeToCamel(string $input): string
     {
         return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $input))));
     }
@@ -150,7 +150,7 @@ abstract class Dto implements DtoContract
      * 
      * @return bool
      */
-    private function _isEmpty(mixed $attribute)
+    private function _isEmpty(mixed $attribute): bool
     {
         return (bool) !$attribute;
     }
