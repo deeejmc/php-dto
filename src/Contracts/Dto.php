@@ -24,7 +24,9 @@ interface Dto
     public function toObject(): object;
 
     /**
+     * @param bool $convertKeysToSnakeCase
+     * 
      * @return array
      */
-    public function toArray(): array;
+    public function toArray(bool $convertKeysToSnakeCase = true): array;
 }

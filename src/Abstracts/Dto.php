@@ -93,9 +93,16 @@ abstract class Dto implements DtoContract
     /**
      * @return array
      */
-    public function toArray(): array
+    public function toArray(bool $convertKeysToSnakeCase = true): array
     {
-        return get_object_vars($this);
+        $properties = get_object_vars($this);
+        if ($convertKeysToSnakeCase) {
+            foreach ($properties as $key => $value) {
+                $properties['snake'][$this->_camelToSnake($key)] = $value;
+            }
+            return $properties['snake'];
+        }
+        return $properties;
     }
 
     /**
@@ -143,6 +150,16 @@ abstract class Dto implements DtoContract
     private function _snakeToCamel(string $input): string
     {
         return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $input))));
+    }
+
+    /**
+     * @param string $input
+     * 
+     * @return string
+     */
+    private function _camelToSnake(string $input): string
+    {
+        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $input));
     }
 
     /**
