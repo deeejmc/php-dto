@@ -13,14 +13,14 @@ abstract class Dto implements DtoContract
 
     /**
      * @param array|null $attributes
-     * @param array|null $mapped
+     * @param array|null $map
      */
     public function __construct(
         array $attributes = null,
-        array $mapped = null
+        array $map = null
     ) {
-        if ($mapped) {
-            $this->map($mapped);
+        if ($map) {
+            $this->map($map);
         }
         if ($attributes) {
             $this->fill($attributes);
@@ -122,13 +122,13 @@ abstract class Dto implements DtoContract
                 array_search($key, $this->mapped) ?: $key
             );
 
-            // make the first letter of the property uppercase for the method name
-            $method = ucfirst($property);
-
             // if the property doesn't exist, skip to the next one
             if (!property_exists($this, $property)) {
                 continue;
             }
+            
+            // make the first letter of the property uppercase for the method name
+            $method = ucfirst($property);
 
             if (method_exists($this, "set{$method}")) {
 
